@@ -61,19 +61,18 @@ def update_session_memory(db: Session, session_id: str, user_text: str, assistan
     
     db.commit()
 
-# --- Ephemeral State (Keep in RAM for now) ---
-# It is okay if the "last active file" resets on reboot.
-active_file_memory = {}  # {session_id: filename}
+# Persistent file memory                              #
+# Active file is retained even through server reboot  #
+# Active file tracking. Saves to User database        #
 
-def get_last_active_file(session_id: str):
+def get_last_active_file(db: Session, username: str):
     """Return the last file used in this session."""
-    return active_file_memory.get(session_id)
+    user = db.query(models.User).filter(models.User.username == username).first()
+    return user.last_active_file if user else None
 
-def set_last_active_file(session_id: str, filename: str):
+def set_last_active_file(db: Session, username: str, filename: str):
     """Remember the file name for later follow-ups."""
-    active_file_memory[session_id] = filename
-
-def clear_all_active_files():
-    """Clear active file context for all sessions."""
-    active_file_memory.clear()
-    print("\n==========\n[DEBUG] active_file cleared\n==========\n")
+    user = db.query(models.User).filter(models.User.username == username).first()
+    if user:
+        user.last_active_file = filename
+        db.commit()

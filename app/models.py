@@ -11,6 +11,7 @@ class User(Base):
     hashed_password = Column(String)
     role = Column(String, default="user")
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    last_active_file = Column(String, nullable=True)
 
 # Store chat history as SQL object
 class ChatHistory(Base):

@@ -12,7 +12,6 @@ from app import routes
 from fastapi import Depends
 from app.core import db as db_core
 from app.routes.auth import require_admin
-from app.memory import clear_all_active_files
 from app.core.authdb import engine, Base
 from app.core.authdb import engine, Base, SessionLocal
 from app.core.security import get_password_hash
@@ -66,8 +65,6 @@ def get_active_database():
 def set_database(name: str, user=Depends(require_admin)):
     """Switch active database (admin only)."""
     db_core.load_database(name)
-    # Clear active files when database resets
-    clear_all_active_files()
     return {"message": f"Active database switched to {name}"}
 
 # --- Paths (make sure they point to app/static and app/templates) ---

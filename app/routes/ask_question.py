@@ -62,7 +62,7 @@ async def ask_question(
     # -------------------
 
     # Track which file should be "active" this round
-    active_file = get_last_active_file(session_id)
+    active_file = get_last_active_file(db, username)
     matched_file = None
 
     # Optional: only keep memory turns about the same file
@@ -100,7 +100,6 @@ async def ask_question(
     files_info = await list_files()
     available_files = [f["filename"] for f in files_info.get("files", [])]
     available_file_ids = [f["file_id"] for f in files_info.get("files", [])]
-    active_file = get_last_active_file(session_id)
 
     file_inference_prompt = f"""
         You are a routing assistant. Determine what the user wants to do.
@@ -274,8 +273,10 @@ async def ask_question(
     multi_file_mode = len(matched_files) > 1           # comparison mode?
     matched_file = matched_files[0] if matched_files else None  # primary for continuity
 
-    if matched_file:
-        set_last_active_file(session_id, matched_file)
+    if matched_file and matched_file != active_file:
+        set_last_active_file(db, username, matched_file)
+        active_file = matched_file
+        print(f"[DEBUG] Active file set to: {active_file}\n")
 
     print(f"[MATCH] Query: {query}")
     print(f"[MATCH] Inferred files: {matched_files or 'None'}")
