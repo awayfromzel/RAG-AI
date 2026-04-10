@@ -21,7 +21,7 @@ Thumbs.db
 
 # --- ChromaDB local persistence ---
 chroma/
-chroma.sqlite3
+/chroma.sqlite3
 
 # --- ChromaDB databases backed up ---
 #databases/
