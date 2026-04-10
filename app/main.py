@@ -93,4 +93,4 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 # this loads the web page when accessed through the browser
 @app.get("/", response_class=HTMLResponse) #FastAPI expects JSON by default so we must specify HTML
 def serve_index(request: Request): #The request object is created and passed to this function in the background by FastAPI, populated by the HTTP metadata
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html", {"request": request})
