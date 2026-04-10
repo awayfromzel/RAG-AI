@@ -24,7 +24,7 @@ chroma/
 chroma.sqlite3
 
 # --- ChromaDB databases backed up ---
-databases/
+#databases/
 databases - Copy/
 
 # --- Logs / Cache ---
@@ -39,8 +39,8 @@ dist/
 *.egg-info/
 
 # --- Uploaded files ---
-uploads/
+#uploads/
 
 # --- User Login info
 app/users/
-app.db
+#app.db
