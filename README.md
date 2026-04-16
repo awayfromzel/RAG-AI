@@ -4,6 +4,24 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
 
 ---
 
+## 🌐 Live Demo
+
+This project is deployed on Render and can be tested here:
+
+[RAG-AI Demo](https://rag-ai-qfhq.onrender.com/)
+
+### Demo Credentials
+A standard user demo account is available for exploring the application:
+
+```text
+username: demo
+password: demo
+```
+
+The demo includes a small preloaded database of documents that can be queried through the RAG interface.
+
+> For safety, administrative credentials are not shared publicly.
+
 ## 🚀 Features
 
 - 📄 **Document Upload & Indexing**
@@ -126,10 +144,10 @@ app/
 │   └── ...
 │
 ├── services/
-│   ├── llm_service.py
 │   ├── chroma_service.py
 │   ├── files_service.py
-│   └── ...
+│   ├── llm_service.py
+│   ├── llm_provider.py
 │
 ├── templates/
 │   ├── index.html
