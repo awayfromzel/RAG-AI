@@ -25,7 +25,7 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
 
 - 🧩 **Session Memory**
   - Tracks recent conversation context
-  - Maintains continuity across queries :contentReference[oaicite:0]{index=0}
+  - Maintains continuity across queries
 
 - 🖼️ **Vision-Based PDF Analysis**
   - Automatically renders PDF pages as images
@@ -33,7 +33,7 @@ A full-stack Retrieval-Augmented Generation (RAG) system that allows users to up
   - Handles scanned/image-only documents
 
 - 🛠️ **Admin Panel**
-  - User management (create/delete/promote) :contentReference[oaicite:1]{index=1}
+  - User management (create/delete/promote)
   - Database management (create/delete/switch)
   - File deletion & system reset
   - Chat log inspection
@@ -155,7 +155,7 @@ uploads/          # Uploaded files
 - File is saved locally
 - Text is extracted and chunked
 - Embeddings are generated
-- Stored in Chroma DB :contentReference[oaicite:2]{index=2}
+- Stored in Chroma DB
 
 ---
 
@@ -165,13 +165,13 @@ uploads/          # Uploaded files
   1. Determines relevant file(s) using LLM
   2. Retrieves relevant chunks from Chroma
   3. Builds structured context
-  4. Sends to LLM for final answer :contentReference[oaicite:3]{index=3}
+  4. Sends to LLM for final answer
 
 ---
 
 ### 3. Memory
 - Stores recent conversation turns
-- Maintains session continuity across queries :contentReference[oaicite:4]{index=4}
+- Maintains session continuity across queries
 
 ---
 
@@ -189,7 +189,7 @@ uploads/          # Uploaded files
 - Promote users to admin
 - Manage document databases
 - Reset vector database
-- View and clear chat logs :contentReference[oaicite:5]{index=5}
+- View and clear chat logs
 
 ---
 
