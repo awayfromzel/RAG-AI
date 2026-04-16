@@ -137,11 +137,13 @@ app/
 │   └── settings.py
 │
 ├── routes/
-│   ├── ask_question.py
-│   ├── upload.py
 │   ├── admin.py
+│   ├── ask_question.py
 │   ├── auth.py
-│   └── ...
+│   ├── debug_metadata.py
+│   ├── delete_file.py
+│   ├── list_files.py
+│   ├── upload.py
 │
 ├── services/
 │   ├── chroma_service.py
